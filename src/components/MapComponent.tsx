@@ -6,12 +6,20 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const ACCESS_TOKEN = 'pk.eyJ1Ijoic2Fsc2FnZXIyIiwiYSI6ImNsbHRhNjNpMTE3eXgzanA4bnEybjZuMTEifQ.QuapIW4TyMQBDClvM6pCjQ';
 
+type Camera = {
+  id: number;
+  lat: number;
+  lng: number;
+  camName: string;
+  srcUrl: string;
+};
+
 export default function MapComponent() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [camTitle, setCamTitle] = useState("");
   const [camSrc, setCamSrc] = useState("");
   const [camId, setCamId] = useState<number>();
-  const [markers, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState<Camera[]>([]);
 
   function handleMarkerClick(cameraId: number, cameraTitle: string, cameraSrc: string){
     if(cameraId !== camId){
